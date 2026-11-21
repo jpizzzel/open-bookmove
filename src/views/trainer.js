@@ -210,6 +210,11 @@ export function trainerView(root, params) {
     const c = run.course;
     const existing = getCard(c, node);
     const now = Date.now();
+    // restarting a line must not grade the same move twice
+    if (!run.graded) run.graded = new Set();
+    const key = `${st.phase}|${node.path}`;
+    if (run.graded.has(key)) return;
+    run.graded.add(key);
     const miss = () => {
       if (!session.missed.some((x) => x.node === node)) session.missed.push({ course: c, node });
     };
