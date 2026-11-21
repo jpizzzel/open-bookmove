@@ -1,5 +1,6 @@
 // Local persistence (everything lives in the browser; nothing is sent anywhere).
-const KEY = 'openbook:v1';
+const KEY = 'open-bookmove:v1';
+const OLD_KEY = 'openbook:v1'; // name used before the rename
 
 const DEFAULT_SETTINGS = {
   sound: true,
@@ -15,7 +16,7 @@ const DEFAULT_SETTINGS = {
 
 function load() {
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = localStorage.getItem(KEY) ?? localStorage.getItem(OLD_KEY);
     if (raw) {
       const data = JSON.parse(raw);
       return {
@@ -85,12 +86,12 @@ export function streak() {
 }
 
 export function exportData() {
-  return JSON.stringify({ app: 'openbook', version: 1, exported: new Date().toISOString(), ...store }, null, 2);
+  return JSON.stringify({ app: 'open-bookmove', version: 1, exported: new Date().toISOString(), ...store }, null, 2);
 }
 
 export function importData(json) {
   const data = JSON.parse(json);
-  if (!data || typeof data !== 'object' || !data.cards) throw new Error('Not an OpenBook backup file');
+  if (!data || typeof data !== 'object' || !data.cards) throw new Error('Not an Open BookMove backup file');
   store.cards = data.cards || {};
   store.custom = data.custom || [];
   store.activity = data.activity || {};

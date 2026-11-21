@@ -77,7 +77,7 @@ export function courseView(root, { id }) {
   if (course.tabiya.from) cg.set({ lastMove: [course.tabiya.from, course.tabiya.to] });
 
   function exportPgn() {
-    download(`${course.id}.pgn`, toPgn(course.root, { Event: course.name, Site: 'OpenBook', Orientation: course.side }), 'application/x-chess-pgn');
+    download(`${course.id}.pgn`, toPgn(course.root, { Event: course.name, Site: 'Open BookMove', Orientation: course.side }), 'application/x-chess-pgn');
     toast('PGN downloaded');
   }
 

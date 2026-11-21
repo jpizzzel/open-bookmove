@@ -23,7 +23,7 @@ route('explore', explorerView);
 route('my', myView);
 route('settings', settingsView);
 
-// Set this to your repository URL after publishing (e.g. https://github.com/you/openbook)
+// Link to the source code shown in the footer
 const REPO_URL = 'https://github.com/jpizzzel/open-bookmove';
 
 const dueBadge = h('span.nav-badge');
@@ -42,7 +42,7 @@ const header = h(
     'a.brand',
     { href: '#/' },
     h('span.brand-knight', { 'aria-hidden': 'true' }, '♞︎'),
-    h('span', 'openbook'),
+    h('span', 'Open BookMove'),
   ),
   h('nav.nav', navLinks),
   h('a.btn.btn-primary.btn-sm.review-cta', { href: '#/train?mode=review' }, 'Start review'),

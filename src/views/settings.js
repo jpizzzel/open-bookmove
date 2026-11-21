@@ -82,7 +82,7 @@ export function settingsView(root) {
         h('p.muted', 'Progress is saved in this browser only. Nothing is uploaded. Export a backup to move it to another device.'),
         h(
           'div.actions',
-          h('button.btn', { onclick: () => download(`openbook-backup-${today()}.json`, exportData()) }, 'Export backup'),
+          h('button.btn', { onclick: () => download(`open-bookmove-backup-${today()}.json`, exportData()) }, 'Export backup'),
           h(
             'button.btn',
             {
@@ -119,7 +119,7 @@ export function settingsView(root) {
         h('h3', 'About'),
         h(
           'p',
-          'OpenBook is a free, open-source opening trainer. Board by ',
+          'Open BookMove is a free, open-source opening trainer. Board by ',
           h('a', { href: 'https://github.com/lichess-org/chessground', target: '_blank', rel: 'noopener' }, 'chessground'),
           ', move rules by ',
           h('a', { href: 'https://github.com/jhlywa/chess.js', target: '_blank', rel: 'noopener' }, 'chess.js'),
