@@ -527,6 +527,8 @@ export function trainerView(root, params) {
     if (e.key === 'h' || e.key === 'H') hint();
     else if ((e.key === 'r' || e.key === 'R') && run && !st.ff) startRun(run, true);
     else if (e.key === 'Enter' || e.key === ' ') {
+      // a focused button or link already handles Enter/Space itself
+      if (e.target.closest('button, a')) return;
       const btn = controlsEl.querySelector('.btn-primary');
       if (btn) {
         e.preventDefault();
