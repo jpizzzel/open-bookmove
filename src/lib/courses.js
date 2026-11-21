@@ -204,8 +204,13 @@ export function saveCustomCourse(course) {
   };
   if (i >= 0) store.custom[i] = entry;
   else store.custom.push(entry);
+  const built = buildCustom(entry);
+  // forget progress on moves that were deleted or replaced
+  const live = new Set(built.cards.map((n) => cardId(built, n)));
+  const prefix = `${built.id}|`;
+  for (const k of Object.keys(store.cards)) if (k.startsWith(prefix) && !live.has(k)) delete store.cards[k];
   save();
-  return buildCustom(entry);
+  return built;
 }
 
 export function deleteCustomCourse(id) {
