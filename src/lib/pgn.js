@@ -66,6 +66,8 @@ export function newNode(san = null) {
 }
 
 function appendComment(node, text) {
+  // drop embedded commands like [%cal Ge2e4], [%csl Rd5], [%clk 0:05:00], [%eval 0.3]
+  text = text.replace(/\[%[^\]]*\]/g, '').replace(/\s+/g, ' ').trim();
   if (!text) return;
   node.comment = node.comment ? `${node.comment} ${text}` : text;
 }
