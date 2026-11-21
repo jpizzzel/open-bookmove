@@ -24,7 +24,7 @@ route('my', myView);
 route('settings', settingsView);
 
 // Set this to your repository URL after publishing (e.g. https://github.com/you/openbook)
-const REPO_URL = 'https://github.com/jpizzzel/openbook';
+const REPO_URL = 'https://github.com/jpizzzel/open-bookmove';
 
 const dueBadge = h('span.nav-badge');
 const links = [
