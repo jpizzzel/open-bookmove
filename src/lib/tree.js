@@ -56,24 +56,29 @@ export function annotate(root, label = 'tree') {
     }
   };
   walk(root, []);
-  // re-merge siblings that normalised to the same SAN (e.g. "Nf3" vs "Ngf3")
-  dedupe(root);
+  // re-merge siblings that normalised to the same SAN (e.g. "Nf3" vs "Ngf3"),
+  // then walk again so the merged-in moves get their positions too
+  if (dedupe(root)) walk(root, []);
   return root;
 }
 
 function dedupe(node) {
   const seen = new Map();
   const kept = [];
+  let merged = false;
   for (const c of node.children) {
     const prev = seen.get(c.san);
-    if (prev) mergeInto(prev, c);
-    else {
+    if (prev) {
+      mergeInto(prev, c);
+      merged = true;
+    } else {
       seen.set(c.san, c);
       kept.push(c);
     }
   }
   node.children = kept;
-  for (const c of kept) dedupe(c);
+  for (const c of kept) if (dedupe(c)) merged = true;
+  return merged;
 }
 
 /** Parse one line string (may include {comments} and (variations)) into a tree. */
