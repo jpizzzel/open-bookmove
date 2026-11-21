@@ -1,4 +1,4 @@
-# OpenBook
+# Open BookMove
 
 A free, open-source chess opening trainer. Learn opening lines move by move, with notes explaining each idea, then keep them in memory with spaced repetition.
 
@@ -24,13 +24,7 @@ npm run dev        # http://localhost:5173
 npm run build      # validates every course, then builds to dist/
 ```
 
-`dist/` is a static site. Host it anywhere: GitHub Pages, Netlify, Cloudflare Pages, or any web server.
-
-## Publish on GitHub Pages
-
-1. Push this folder to a new GitHub repository.
-2. In the repository, open **Settings → Pages** and set **Source** to **GitHub Actions**.
-3. Every push to `main` now builds and deploys the site (see `.github/workflows/deploy.yml`).
+`dist/` is a static site that can be served from any web host.
 
 ## Adding or fixing openings
 
@@ -53,6 +47,6 @@ scripts/validate.mjs   content checker (runs before every build)
 - Board: [chessground](https://github.com/lichess-org/chessground) (GPL-3.0), the board used by Lichess. Pieces are the cburnett set.
 - Move rules: [chess.js](https://github.com/jhlywa/chess.js) (BSD-2-Clause).
 
-OpenBook is licensed under the **GNU GPL v3.0 or later** (see `LICENSE`), which chessground requires. You can use, share and modify it freely. If you distribute a modified version, it has to stay open source under the same license.
+Open BookMove is licensed under the **GNU GPL v3.0 or later** (see `LICENSE`), which chessground requires. You can use, share and modify it freely. If you distribute a modified version, it has to stay open source under the same license.
 
-The opening notes in this project were written for it. OpenBook is an independent project and is not affiliated with any commercial opening-training service.
+The opening notes in this project were written for it. Open BookMove is an independent project and is not affiliated with any commercial opening-training service.
